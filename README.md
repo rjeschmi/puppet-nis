@@ -58,6 +58,10 @@ Contributors
 Release Notes
 -------------
 
+**0.1.1**
+
+* Using custom augeas lenses to edit /var/yp/nicknames
+
 **0.1.0**
 
 * Initial version

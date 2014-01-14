@@ -99,32 +99,16 @@ class nis::server (
         require => Package[["ypserv","ypbind","yp-tools"]]
     }
 
-    append_if_no_such_line{
-          yppasswd: file => "/var/yp/nicknames",
-          line => 'passwd		passwd.byname',
-          notify => Service["ypserv"],
-          require => Package[["ypserv","ypbind","yp-tools"]]
-    }
-
-    append_if_no_such_line{
-          ypgroup: file => "/var/yp/nicknames",
-          line => 'group		group.byname',
-          notify => Service["ypserv"],
-          require => Package[["ypserv","ypbind","yp-tools"]]
-    }
-
-    append_if_no_such_line{
-          yphost: file => "/var/yp/nicknames",
-          line => 'hosts		hosts.byname',
-          notify => Service["ypserv"],
-          require => Package[["ypserv","ypbind","yp-tools"]]
-    }
-
-    append_if_no_such_line{
-          ypnetgroup: file => "/var/yp/nicknames",
-          line => 'netgroup	netgroup',
-          notify => Service["ypserv"],
-          require => Package[["ypserv","ypbind","yp-tools"]]
+    augeas{ "nis server nicknames" :
+        context => "/files/var/yp/nicknames",
+        changes => [
+            "set passwd/map passwd.byname",
+            "set group/map group.byname",
+            "set hosts/map hosts.byname",
+            "set netgroup/map netgroup",
+        ],
+        notify => Service["ypserv"],
+        require => Package[["ypserv","ypbind","yp-tools"]]
     }
 
     exec { "yp-config":
