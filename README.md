@@ -58,6 +58,10 @@ Contributors
 Release Notes
 -------------
 
+**0.1.2**
+
+* Fix the nis auth enable procedure
+
 **0.1.1**
 
 * Using custom augeas lenses to edit /var/yp/nicknames

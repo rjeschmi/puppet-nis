@@ -1,5 +1,5 @@
 name    'desalvo-nis'
-version '0.1.1'
+version '0.1.2'
 source 'https://github.com/desalvo/puppet-nis'
 author 'desalvo'
 license 'Apache License, Version 2.0'

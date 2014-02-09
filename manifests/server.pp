@@ -113,7 +113,7 @@ class nis::server (
 
     exec { "yp-config":
         command => "domainname $ypdomain && ypinit -s $ypmaster && authconfig --enablenis --enablekrb5 --kickstart",
-        path => [ '/bin', '/usr/bin', '/usr/lib64/yp', '/usr/lib/yp' ],
+        path => [ '/bin', '/usr/bin', '/usr/lib64/yp', '/usr/lib/yp', '/usr/sbin' ],
         unless => "test -d /var/yp/$ypdomain",
         notify  => [Service["ypserv"],Service["ypbind"]],
         require => Package[["ypserv","ypbind","yp-tools"]]
