@@ -7,7 +7,7 @@
 # [*ypdomain*]
 #   The NIS domain name
 #
-# [*ypserver*]
+# [*ypserv*]
 #   The NIS server
 #
 # [*ypmaster*]
@@ -36,7 +36,7 @@
 #  class { nis:
 #    client   => true,
 #    ypdomain => "example",
-#    ypserver => "nis.example.com",
+#    ypserv => "nis.example.com",
 #  }
 #
 # === Authors

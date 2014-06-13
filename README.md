@@ -17,7 +17,7 @@ Usage
 
 Parameters:
 * **ypdomain**: the NIS domain name
-* **ypserver**: the NIS server
+* **ypserv**: the NIS server
 * **ypmaster**: the NIS master, for server configurations
 * **client**: enable the client configuration, default is true
 * **server**: enable the server configuration, default is false
@@ -31,7 +31,7 @@ Parameters:
 ```nis-client
 class {'nis':
     ypdomain => 'mydomain',
-    ypserver => 'nis.example.com',
+    ypserv   => 'nis.example.com',
     groups   => ['users'],
 }
 ```
@@ -41,7 +41,7 @@ class {'nis':
 ```nis-slave
 class {'nis':
     ypdomain   => 'mydomain',
-    ypserver   => 'nis.example.com',
+    ypserv     => 'nis.example.com',
     ypmaster   => 'nismaster.example.com',
     master     => true,
     securenets => 'puppet:///modules/mymodule/securenets',
