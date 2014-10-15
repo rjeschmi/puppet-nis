@@ -67,6 +67,9 @@ class nis (
    $groups     = undef,
    $securenets = undef,
    $hostallow  = undef,
+   $nsswitch_passwd_order = "compat",
+   $nsswitch_shadow_order = "files nis",
+   $nsswitch_group_order = "compat",
 ) {
 
    package { "ypbind": ensure => latest }
@@ -85,7 +88,7 @@ class nis (
       owner   => "root",
       group   => "root",
       mode    => 0644,
-      source  => "puppet:///modules/nis/nsswitch.conf",
+      content => template("nis/nsswitch.conf.erb"),
    }
 
    augeas{ "nis domain network" :
