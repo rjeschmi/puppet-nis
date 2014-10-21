@@ -58,6 +58,10 @@ Contributors
 Release Notes
 -------------
 
+**0.1.3**
+
+* Hefeweizen: allow overwriting search order for passwd, shadow and group in nsswitch.conf
+
 **0.1.2**
 
 * Fix the nis auth enable procedure
