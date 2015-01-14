@@ -8,7 +8,7 @@
 #   The NIS domain name
 #
 # [*ypserv*]
-#   The NIS server
+#   A single NIS server or an array of NIS servers
 #
 # [*ypmaster*]
 #   The NIS master
@@ -36,7 +36,7 @@
 #  class { nis:
 #    client   => true,
 #    ypdomain => "example",
-#    ypserv => "nis.example.com",
+#    ypserv   => "nis.example.com",
 #  }
 #
 # === Authors
@@ -67,12 +67,15 @@ class nis (
    $groups     = undef,
    $securenets = undef,
    $hostallow  = undef,
-   $nsswitch_passwd_order = "compat",
-   $nsswitch_shadow_order = "files nis",
-   $nsswitch_group_order = "compat",
 ) {
 
    package { "ypbind": ensure => latest }
+
+   if ($ypserv and is_array($ypserv)) {
+       $yps = $ypserv
+   } else {
+       $yps = [$ypserv]
+   }
 
    file { "/etc/yp.conf":
       ensure  => file,
@@ -88,7 +91,7 @@ class nis (
       owner   => "root",
       group   => "root",
       mode    => 0644,
-      content => template("nis/nsswitch.conf.erb"),
+      source  => "puppet:///modules/nis/nsswitch.conf",
    }
 
    augeas{ "nis domain network" :
