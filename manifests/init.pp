@@ -81,7 +81,7 @@ class nis (
       ensure  => file,
       owner   => "root",
       group   => "root",
-      mode    => 0644,
+      mode    => '0644',
       content => template("nis/yp.conf.erb"),
       require => Package["ypbind"]
    }
@@ -90,7 +90,7 @@ class nis (
       ensure  => file,
       owner   => "root",
       group   => "root",
-      mode    => 0644,
+      mode    => '0644',
       source  => "puppet:///modules/nis/nsswitch.conf",
    }
 
