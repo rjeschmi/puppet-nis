@@ -58,6 +58,11 @@ Contributors
 Release Notes
 -------------
 
+**0.3.0**
+
+* Add puppet 4 support
+* Fix ypserv directive in templates
+
 **0.2.0**
 
 * Add multiple nis servers support

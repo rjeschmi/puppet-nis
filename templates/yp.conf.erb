@@ -22,4 +22,4 @@
 <% @yps.sort.each do |serv|-%>
 domain <%= @ypdomain %> server <%= serv %>
 <% end -%>
-ypserver <%= @ypserv %>
+ypserver <%= @yps[0] %>
