@@ -8,7 +8,7 @@
 #   The NIS domain name
 #
 # [*ypserv*]
-#   The NIS server
+#   A single NIS server or an array of NIS servers
 #
 # [*ypmaster*]
 #   The NIS master
@@ -36,7 +36,7 @@
 #  class { nis:
 #    client   => true,
 #    ypdomain => "example",
-#    ypserv => "nis.example.com",
+#    ypserv   => "nis.example.com",
 #  }
 #
 # === Authors
@@ -71,11 +71,17 @@ class nis (
 
    package { "ypbind": ensure => latest }
 
+   if ($ypserv and is_array($ypserv)) {
+       $yps = $ypserv
+   } else {
+       $yps = [$ypserv]
+   }
+
    file { "/etc/yp.conf":
       ensure  => file,
       owner   => "root",
       group   => "root",
-      mode    => 0644,
+      mode    => '0644',
       content => template("nis/yp.conf.erb"),
       require => Package["ypbind"]
    }
@@ -84,7 +90,7 @@ class nis (
       ensure  => file,
       owner   => "root",
       group   => "root",
-      mode    => 0644,
+      mode    => '0644',
       source  => "puppet:///modules/nis/nsswitch.conf",
    }
 

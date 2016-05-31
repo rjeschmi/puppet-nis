@@ -17,7 +17,7 @@ Usage
 
 Parameters:
 * **ypdomain**: the NIS domain name
-* **ypserv**: the NIS server
+* **ypserv**: the NIS server, can be a single value or an array
 * **ypmaster**: the NIS master, for server configurations
 * **client**: enable the client configuration, default is true
 * **server**: enable the server configuration, default is false
@@ -31,7 +31,7 @@ Parameters:
 ```nis-client
 class {'nis':
     ypdomain => 'mydomain',
-    ypserv   => 'nis.example.com',
+    ypserv   => ['nis1.example.com','nis2.example.com'],
     groups   => ['users'],
 }
 ```
@@ -57,6 +57,15 @@ Contributors
 
 Release Notes
 -------------
+
+**0.3.0**
+
+* Add puppet 4 support
+* Fix ypserv directive in templates
+
+**0.2.0**
+
+* Add multiple nis servers support
 
 **0.1.2**
 

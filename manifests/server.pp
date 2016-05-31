@@ -34,7 +34,7 @@ class nis::server (
             ensure  => file,
             owner   => "root",
             group   => "root",
-            mode    => 0644,
+            mode    => '0644',
             source  => $nicknames,
             require => Package[["ypserv","ypbind","yp-tools"]],
             notify  => Service["ypserv"]
@@ -46,7 +46,7 @@ class nis::server (
             ensure  => file,
             owner   => "root",
             group   => "root",
-            mode    => 0644,
+            mode    => '0644',
             source  => $securenets,
             require => Package[["ypserv","ypbind","yp-tools"]],
             notify  => Service["ypserv"]

@@ -1,0 +1,15 @@
+{
+  "name": "desalvo-nis",
+  "version": "0.3.0",
+  "author": "desalvo",
+  "summary": "Puppet module for NIS management",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/desalvo/puppet-nis",
+  "description": "A puppet module for managing NIS client and servers",
+  "issues_url": "https://github.com/desalvo/puppet-nis/issues",
+  "project_page": "https://github.com/desalvo/puppet-nis",
+  "dependencies": [
+    {"version_requirement":">= 4.0.0","name":"puppetlabs/stdlib"},
+    {"version_requirement":">= 0.1.0","name":"desalvo/rpcbind"}
+  ]
+}
